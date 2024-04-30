@@ -18,6 +18,7 @@ def print_paragraphs(n,char):
     for i in range(len(paragraphs)): # Iterate through the list of strings
         if charCount + len(paragraphs[i]) <= width: # If the character count plus the length of the current string is less than or equal to the width, add it to the new line
             charCount += len(paragraphs[i]) + 1 # Add the length of the current string to the character count
+            # add a dummy string?
             line.insert(lineCount, paragraphs[i] + " ") # Add the current string to the line
         else: # If the character count plus the length of the current string is greater than the width, increase line count and reset character count, push the current string to the next line
             lineCount += 1 
