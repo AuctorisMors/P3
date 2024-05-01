@@ -21,17 +21,21 @@ def print_paragraphs(n,char,width,bType = None):
                 lineCount += 1 # Increase the line count by 1
                 charCount = len(paragraphs[i]) + 1 # Reset the character count to the length of the current string
                 line.append(paragraphs[i] + " ") # Add the current string to the next line
-    elif boxType == "3col":
+    elif boxType == "3col": # If the box type is "3col", print the lines with only 3 strings per line
+        colCount = 0
         for i in range(len(paragraphs)):
-            if charCount + len(paragraphs[i]) < width - 3:
+            if charCount + len(paragraphs[i]) < width - 3 and colCount < 3:
                 charCount += len(paragraphs[i]) + 1
                 line[lineCount] += paragraphs[i] + " "
+                colCount += 1
             else:
+                colCount = 1
                 lineCount += 1
                 charCount = len(paragraphs[i]) + 1
                 line.append(paragraphs[i] + " ")
     else: # If the box type is not "box", print out an error
         print("Error: Invalid box type")
+        
     # Print the lines to the console
     for i in range(lineCount + 1):
         print(char + " " + line[i].center(width - 3) + char) # Left justify the string and fill the remaining space with spaces to ensure that each line is the correct width

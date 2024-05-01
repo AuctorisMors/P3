@@ -2,5 +2,11 @@
 import random
 import support
 
+# Parameters for the slot machine
+symbols = ["💲", "7️⃣", "🍒", "'🪙'", "💎", "🔔", "🔔", "🐴", "🐴", "🍊", "🍊", "🪶", "🪶", "🪶", "🍋","🍋", "🍋", "🍉", "🍉", "🍉", "🍇", "🍇", "🍇", "🍇"]
+symbolsCount = len(symbols)
+slotCount = 3
+
+
 # Test the function   
 support.print_paragraphs("test1 test2 test3 test4 test5 test6 test7 test8 test9 test10 test11 test12 test13 test14 test15", "#", 32, "3col")
