@@ -24,7 +24,7 @@ def print_paragraphs(n,char,width,bType = None):
     elif boxType == "3col": # If the box type is "3col", print the lines with only 3 strings per line
         colCount = 0
         for i in range(len(paragraphs)):
-            if charCount + len(paragraphs[i]) < width - 3 and colCount < 3:
+            if charCount + len(paragraphs[i]) < width - 3 and colCount <= 2:
                 charCount += len(paragraphs[i]) + 1
                 line[lineCount] += paragraphs[i] + " "
                 colCount += 1
@@ -38,5 +38,5 @@ def print_paragraphs(n,char,width,bType = None):
         
     # Print the lines to the console
     for i in range(lineCount + 1):
-        print(char + " " + line[i].center(width - 3) + char) # Left justify the string and fill the remaining space with spaces to ensure that each line is the correct width
+        print(char + " " + line[i].center(width - 3) + char)
     print(char * width) # Print the bottom border (char) to the console    
