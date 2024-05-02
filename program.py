@@ -9,25 +9,71 @@ slotCount = 3
 
 def main():
     active = True
+    debugCash = 1000
     while active:
         # Print the welcome message
         support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
+        support.print_paragraphs("Press enter to start", "%", 32, "box")
         input() # Wait for the user to press Enter
-        #takeBets() # Take the user's bets
-        pullLever() # Pull the lever
+        pullLever(takeBets(debugCash))
     
-def pullLever():
+def takeBets(debugCash):
+    ## Take the user's bets
+    bet = 0
+    while bet <= 0:
+        try:
+            support.print_paragraphs(f"You have: ${debugCash}", "%", 32, "box")
+            bet = int(input("Enter your bet: "))
+        except:
+            print("Please enter a valid number.")
+            bet = 0
+        if bet >= debugCash:
+            print("You don't have enough money to bet that much.")
+            bet = 0
+    return bet
+
+def pullLever(bet):
     ## Pull the lever
     # Get the random symbols
     randomSymbols = ["","",""]
     for i in range(3):
         for j in range(slotCount):
-            randomSymbols[i] += str(symbols[random.randint(0, symbolsCount - 1)]) + " "
+            randomSymbols[i] += symbols[random.randint(0, symbolsCount - 1)] + " "
     printedSymbols = randomSymbols[0] + randomSymbols[1] + randomSymbols[2]
+    
+    # Check if the user won
+    cashOut = 0
+    for i in range(len(printedSymbols)): # Check for which symbols match across the slots and calculate the cash out 
+        # add in a way to value each symbol differently
+        if i % 2 == 0: # Check only the first symbol of each slot to avoid duplicates
+            matching_symbols = set() # Use a set to avoid duplicates
+            for j in range(i, len(printedSymbols), 2): # Check the other symbols in the same slot
+                if printedSymbols[i] == printedSymbols[j]: # If the symbols match, add them to the set
+                    matching_symbols.add(j) # Add the index of the matching symbol
+            # check for diagonal matches and add them to the set
+            if i == 0 and printedSymbols[0] == printedSymbols[4] == printedSymbols[8]:
+                matching_symbols.add(4)
+                matching_symbols.add(8)
+            # check for the other diagonal match and add them to the set
+            if i == 2 and printedSymbols[2] == printedSymbols[4] == printedSymbols[6]:
+                matching_symbols.add(4)
+                matching_symbols.add(6)
+            if len(matching_symbols) >= 3: # If there are at least 3 matching symbols, the user wins
+                if printedSymbols[i] == "⚊": # If the symbol is a blank, the user wins nothing
+                    break
+                if printedSymbols[i] == "⛛":
+                    cashOut += bet #??
+                cashOut += bet * (len(matching_symbols) - 1) / 2 # Calculate the cash out based on the number of matching symbols
+    # Deduct taxes to keep the game fair
+    cashOut = cashOut * 0.9
+    cashOut = round(cashOut)
     
     # Print the slot machine
     support.print_paragraphs("Slot Machine", "#", 32, "box")
     support.print_paragraphs(printedSymbols, "#", 32, "3col")
+    print(f"You won {cashOut}!")
+    
+    return cashOut
     
 # Run the main function
 if __name__ == "__main__":
