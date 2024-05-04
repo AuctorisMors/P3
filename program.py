@@ -27,7 +27,7 @@ def takeBets(debugCash):
         except:
             print("Please enter a valid number.")
             bet = 0
-        if bet >= debugCash:
+        if bet > debugCash:
             print("You don't have enough money to bet that much.")
             bet = 0
     return bet
@@ -43,9 +43,8 @@ def pullLever(bet):
     
     # Check if the user won
     cashOut = 0
-    for i in range(len(printedSymbols)): # Check for which symbols match across the slots and calculate the cash out 
-        # add in a way to value each symbol differently
-        if i % 2 == 0: # Check only the first symbol of each slot to avoid duplicates
+    for i in range(len(printedSymbols)): # Check for which symbols match across the slots and calculate the cash out. Check only odd entries and set.
+        if i % 2 == 0:
             matching_symbols = set() # Use a set to avoid duplicates
             for j in range(i, len(printedSymbols), 2): # Check the other symbols in the same slot
                 if printedSymbols[i] == printedSymbols[j]: # If the symbols match, add them to the set
@@ -58,12 +57,36 @@ def pullLever(bet):
             if i == 2 and printedSymbols[2] == printedSymbols[4] == printedSymbols[6]:
                 matching_symbols.add(4)
                 matching_symbols.add(6)
-            if len(matching_symbols) >= 3: # If there are at least 3 matching symbols, the user wins
-                if printedSymbols[i] == "⚊": # If the symbol is a blank, the user wins nothing
-                    break
-                if printedSymbols[i] == "⛛":
-                    cashOut += bet #??
-                cashOut += bet * (len(matching_symbols) - 1) / 2 # Calculate the cash out based on the number of matching symbols
+            if len(matching_symbols) >= 3: # If there are at least 3 matching symbols, the user wins an amount based on the symbol
+                match printedSymbols[i]:
+                    case "⚊": # If the symbol is a blank, the user wins nothing
+                        break
+                    case "⛛":
+                        cashOut += bet * 1.05
+                    case "♦":
+                        cashOut += bet * 1.10
+                    case  "♥":
+                        cashOut += bet * 1.15
+                    case "♣":
+                        cashOut += bet * 1.20
+                    case "♠":
+                        cashOut += bet * 1.25
+                    case "♞":
+                        cashOut += bet * 1.30
+                    case "♝":
+                        cashOut += bet * 1.35
+                    case "♜":
+                        cashOut += bet * 1.40
+                    case "♛":
+                        cashOut += bet * 1.45
+                    case "✪":
+                        cashOut += bet * 1.50
+                    case "♚":
+                        cashOut += bet * 1.55
+                    case "Ⅻ":
+                        cashOut += bet * 1.60
+                # user also gets some money for the number of matching symbols in total
+                cashOut += bet * (len(matching_symbols) - 1) / 2
     # Deduct taxes to keep the game fair
     cashOut = cashOut * 0.9
     cashOut = round(cashOut)
