@@ -1,6 +1,7 @@
 # Description: This is a simple Python program that simulates a small slot machine and its support functions for a basic console interface
 import random
 import support
+import funds
 
 # Parameters for the slot machine
 symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
@@ -9,30 +10,25 @@ slotCount = 3
 
 def main():
     active = True
-    debugCash = 1000
+    userCash = funds.set(True)
+    # Print the welcome message
+    support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
+    support.print_paragraphs("Press enter to start", "%", 32, "box")
+    input() # Wait for the user to press Enter
     while active:
-        # Print the welcome message
-        support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
-        support.print_paragraphs("Press enter to start", "%", 32, "box")
-        input() # Wait for the user to press Enter
-        pullLever(takeBets(debugCash))
-    
-def takeBets(debugCash):
-    ## Take the user's bets
-    bet = 0
-    while bet <= 0:
-        try:
-            support.print_paragraphs(f"You have: ${debugCash}", "%", 32, "box")
-            bet = int(input("Enter your bet: "))
-        except:
-            print("Please enter a valid number.")
-            bet = 0
-        if bet > debugCash:
-            print("You don't have enough money to bet that much.")
-            bet = 0
-    return bet
-
-def pullLever(bet):
+        # Take bets, returns an array so we can edit funds and keep bet amount for winnings calc
+        bet = funds.takeBets(userCash)
+        userCash = bet[1]
+        # Figure out our winnings based off our bet
+        castOut = pullLever(bet[0])
+        # already deducted bet, so lets add winnings
+        userCash = funds.edit(castOut, userCash, "add")
+        # See if they want to play again.
+        support.print_paragraphs("Do you want to play again?", "%", 32, "box")
+        active = support.promptUser()
+# Pull that lever!
+# Get our symbols, see who much we won
+def pullLever(_bet):
     ## Pull the lever
     # Get the random symbols
     randomSymbols = ["","",""]
@@ -40,9 +36,8 @@ def pullLever(bet):
         for j in range(slotCount):
             randomSymbols[i] += symbols[random.randint(0, symbolsCount - 1)] + " "
     printedSymbols = randomSymbols[0] + randomSymbols[1] + randomSymbols[2]
-    
     # Check if the user won
-    cashOut = 0
+    _castOut = 0
     for i in range(len(printedSymbols)): # Check for which symbols match across the slots and calculate the cash out. Check only odd entries and set.
         if i % 2 == 0:
             matching_symbols = set() # Use a set to avoid duplicates
@@ -62,42 +57,39 @@ def pullLever(bet):
                     case "⚊": # If the symbol is a blank, the user wins nothing
                         break
                     case "⛛":
-                        cashOut += bet * 1.05
+                        _castOut += _bet * 1.05
                     case "♦":
-                        cashOut += bet * 1.10
+                        _castOut += _bet * 1.10
                     case  "♥":
-                        cashOut += bet * 1.15
+                        _castOut += _bet * 1.15
                     case "♣":
-                        cashOut += bet * 1.20
+                        _castOut += _bet * 1.20
                     case "♠":
-                        cashOut += bet * 1.25
+                        _castOut += _bet * 1.25
                     case "♞":
-                        cashOut += bet * 1.30
+                        _castOut += _bet * 1.30
                     case "♝":
-                        cashOut += bet * 1.35
+                        _castOut += _bet * 1.35
                     case "♜":
-                        cashOut += bet * 1.40
+                        _castOut += _bet * 1.40
                     case "♛":
-                        cashOut += bet * 1.45
+                        _castOut += _bet * 1.45
                     case "✪":
-                        cashOut += bet * 1.50
+                        _castOut += _bet * 1.50
                     case "♚":
-                        cashOut += bet * 1.55
+                        _castOut += _bet * 1.55
                     case "Ⅻ":
-                        cashOut += bet * 1.60
+                        _castOut += _bet * 1.60
                 # user also gets some money for the number of matching symbols in total
-                cashOut += bet * (len(matching_symbols) - 1) / 2
+                _castOut += _bet * (len(matching_symbols) - 1) / 2
     # Deduct taxes to keep the game fair
-    cashOut = cashOut * 0.9
-    cashOut = round(cashOut)
-    
+    _castOut = _castOut * 0.9
+    _castOut = round(_castOut)
     # Print the slot machine
     support.print_paragraphs("Slot Machine", "#", 32, "box")
     support.print_paragraphs(printedSymbols, "#", 32, "3col")
-    print(f"You won {cashOut}!")
-    
-    return cashOut
-    
+    print(f"You won {_castOut}!")
+    return _castOut
 # Run the main function
 if __name__ == "__main__":
     main()
