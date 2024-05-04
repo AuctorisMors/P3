@@ -10,19 +10,16 @@ slotCount = 3
 
 def main():
     active = True
-    userCash = funds.set(True)
+    funds.set(1000)
     # Print the welcome message
     support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
     support.print_paragraphs("Press enter to start", "%", 32, "box")
     input() # Wait for the user to press Enter
     while active:
-        # Take bets, returns an array so we can edit funds and keep bet amount for winnings calc
-        bet = funds.takeBets(userCash)
-        userCash = bet[1]
-        # Figure out our winnings based off our bet
-        castOut = pullLever(bet[0])
+        bet = funds.takeBets()
+        castOut = pullLever(bet)
         # already deducted bet, so lets add winnings
-        userCash = funds.edit(castOut, userCash, "add")
+        funds.edit(castOut, "add")
         # See if they want to play again.
         support.print_paragraphs("Do you want to play again?", "%", 32, "box")
         active = support.promptUser()
