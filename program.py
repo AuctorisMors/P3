@@ -1,7 +1,7 @@
 # Description: This is a simple Python program that simulates a small slot machine and its support functions for a basic console interface
 import random
+from funds import Funds
 import support
-import funds
 
 # Parameters for the slot machine
 symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
@@ -9,8 +9,8 @@ symbolsCount = len(symbols)
 slotCount = 3
 
 def main():
+    funds = Funds(1000)
     active = True
-    funds.set(1000)
     # Print the welcome message
     support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
     support.print_paragraphs("Press enter to start", "%", 32, "box")
