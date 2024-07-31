@@ -9,7 +9,7 @@ class Funds:
     def get(self):
         return self._amount
     # Take the user's bets as an array so we can pass back both what the bet was and the changed funds// relic code
-    def takeBets(self):
+    def bet(self):
         _bet = 0
         while _bet <= 0:
             try:
