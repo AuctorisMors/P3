@@ -1,15 +1,11 @@
 # Description: This is a simple Python program created to learn python.
-import random
-from collections import namedtuple
 from support.funds import Funds
 from support.text import Text
 import support.language as Lang
-from games.slots import Slots
+import games
 
-# Setup
-Paragraph = namedtuple("Paragraph", ["Style", "Width", "Type"])
 # Params
-basic_para = Paragraph("#", 32, "box")
+basic_para = Text.Paragraph("#", 32, "box")
 funds = Funds(1000)
 
 ## Main Func
@@ -35,8 +31,8 @@ def language_choice(p):
 def main_menu(p,lang):
     Text.print(lang['main-menu'], p.Style, p.Width)
     menu = {
-        '1' : ['3 Lane Slots', Slots.main],
-        '2' : ['3 Lane Slots', Slots.main]
+        '1' : ['3 Lane Slots', games.Slots.main],
+        '2' : ['3 Lane Slots', games.Slots.main]
     }
     menu['1'][1](funds,lang)
     print(f'{funds.get()}')

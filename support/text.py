@@ -1,4 +1,6 @@
+from collections import namedtuple
 class Text:
+    Paragraph = namedtuple("Paragraph", ["Style", "Width", "Type"])
     # Print paragraph text.
     def print(n,char,width,bType = None):
         # Init some parameters
@@ -56,16 +58,16 @@ class Text:
                 print(lang['not-valid'])
                 _ans = ""
     ## Take a dict and ask the player to pick one
-    def request(choice, lang):
+    def request(choices, lang):
         _ans = ''
         while _ans == '':
             try:
                 _ans = str(input())
             except:
-                print(lang['request'] + str(choice))
+                print(lang['request'] + str(choices))
                 _ans = ''
-            if _ans.lower() in choice:
+            if _ans.lower() in choices:
                 return _ans.lower()
             else:
-                print(lang['request'] + str(choice))
+                print(lang['request'] + str(choices))
                 _ans = ''
