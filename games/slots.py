@@ -1,5 +1,4 @@
 from support.text import Text
-from support.funds import Funds
 import random
 
 class Slots:
@@ -8,22 +7,21 @@ class Slots:
     symbolsCount = len(symbols)
     slotCount = 3
 
-    def main(funds):
-        _funds = Funds(funds)
+    def main(funds, lang):
         active = True
         # Print the welcome message
         Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
         Text.print("Press enter to start", "%", 32, "box")
         input() # Wait for the user to press Enter
         while active:
-            bet = _funds.bet()
+            bet = funds.bet()
             castOut = Slots.pullLever(bet)
             # already deducted bet, so lets add winnings
-            _funds.edit(castOut, "add")
+            funds.edit(castOut, "add")
             # See if they want to play again.
             Text.print("Do you want to play again?", "%", 32, "box")
-            active = Text.prompt()
-        return _funds
+            active = Text.prompt(lang)
+        return funds
     # Pull that lever!
     # Get our symbols, see who much we won
     def pullLever(_bet):

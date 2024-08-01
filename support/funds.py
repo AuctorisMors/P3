@@ -1,5 +1,6 @@
-import support.text as Text
+from support.text import Text
 class Funds:
+    _amount = 0
     def __init__(self, funds):
         self._amount = funds
     # Set starting cash or reset cash if needed
@@ -11,7 +12,7 @@ class Funds:
     # Take the user's bets as an array so we can pass back both what the bet was and the changed funds// relic code
     def bet(self):
         _bet = 0
-        while _bet <= 0:
+        while _bet == 0:
             try:
                 Text.print(f"You have: ${self._amount}", "%", 32, "box")
                 _bet = int(input("Enter your bet: "))
