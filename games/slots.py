@@ -1,28 +1,29 @@
-import support
+from support.text import Text
+from support.funds import Funds
 import random
 
 class Slots:
-    def __init__(self, funds):
-        self._funds = funds
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
     symbolsCount = len(symbols)
     slotCount = 3
 
-    def main():
+    def main(funds):
+        _funds = Funds(funds)
         active = True
         # Print the welcome message
-        support.print_paragraphs("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
-        support.print_paragraphs("Press enter to start", "%", 32, "box")
+        Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
+        Text.print("Press enter to start", "%", 32, "box")
         input() # Wait for the user to press Enter
         while active:
-            bet = Slots._funds.takeBets()
+            bet = _funds.bet()
             castOut = Slots.pullLever(bet)
             # already deducted bet, so lets add winnings
-            Slots._funds.edit(castOut, "add")
+            _funds.edit(castOut, "add")
             # See if they want to play again.
-            support.print_paragraphs("Do you want to play again?", "%", 32, "box")
-            active = support.promptUser()
+            Text.print("Do you want to play again?", "%", 32, "box")
+            active = Text.prompt()
+        return _funds
     # Pull that lever!
     # Get our symbols, see who much we won
     def pullLever(_bet):
@@ -83,7 +84,7 @@ class Slots:
         _castOut = _castOut * 0.9
         _castOut = round(_castOut)
         # Print the slot machine
-        support.print_paragraphs("Slot Machine", "#", 32, "box")
-        support.print_paragraphs(printedSymbols, "#", 32, "3col")
+        Text.print("Slot Machine", "#", 32, "box")
+        Text.print(printedSymbols, "#", 32, "3col")
         print(f"You won {_castOut}!")
         return _castOut

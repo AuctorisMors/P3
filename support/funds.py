@@ -1,4 +1,4 @@
-import support
+import support.text as Text
 class Funds:
     def __init__(self, funds):
         self._amount = funds
@@ -13,7 +13,7 @@ class Funds:
         _bet = 0
         while _bet <= 0:
             try:
-                support.print_paragraphs(f"You have: ${self._amount}", "%", 32, "box")
+                Text.print(f"You have: ${self._amount}", "%", 32, "box")
                 _bet = int(input("Enter your bet: "))
             except:
                 print("Please enter a valid number.")
@@ -27,8 +27,8 @@ class Funds:
     def edit(self, _inCash, _op):
         if _op == "add":
             _outCash = _inCash + self._amount
-            support.print_paragraphs(f"${_inCash} was added to your funds. You have ${_outCash} now.", "%", 32, "box")
+            Text.print(f"${_inCash} was added to your funds. You have ${_outCash} now.", "%", 32, "box")
         if _op == "sub":
             _outCash = self._amount - _inCash
-            support.print_paragraphs(f"${_inCash} was deducted from your funds. You have ${_outCash} now.", "%", 32, "box")
+            Text.print(f"${_inCash} was deducted from your funds. You have ${_outCash} now.", "%", 32, "box")
         self._amount = _outCash

@@ -1,4 +1,4 @@
-class Support:
+class Text:
     # Print paragraph text.
     def print(n,char,width,bType = None):
         # Init some parameters
@@ -40,18 +40,32 @@ class Support:
             print(char + " " + line[i].center(width - 3) + char)
         print(char * width) # Print the bottom border (char) to the console
     ## Ask the player to enter Y/N to a prompt, make sure it is a string and either y or n.
-    def prompt():
+    def prompt(lang):
         _ans = ""
         while _ans == "":
             try:
-                _ans = str(input("Yes or No?: "))
+                _ans = str(input(lang['yon']))
             except:
-                print("Not a valid answer.")
+                print(lang['not-valid'])
                 _ans = ""
             if _ans.lower() in ["y", "yes"]:
                 return True
             elif _ans.lower() in ["n", "no"]:
                 return False
             else:
-                print("Not a valid answer.")
+                print(lang['not-valid'])
                 _ans = ""
+    ## Take a dict and ask the player to pick one
+    def request(choice, lang):
+        _ans = ''
+        while _ans == '':
+            try:
+                _ans = str(input())
+            except:
+                print(lang['request'] + str(choice))
+                _ans = ''
+            if _ans.lower() in choice:
+                return _ans.lower()
+            else:
+                print(lang['request'] + str(choice))
+                _ans = ''
