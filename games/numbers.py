@@ -1,12 +1,18 @@
 from support.game import Game
 
 class Numbers(Game):
-    # Load up params from inheritance
-    p = Game.game_para
-    a = Game.game_alert
-    random = Game.randomInt
-    Text = Game.text
-    game_text = 'numbers_game'
+    # Define out startup func
+    def main(funds, lang):
+        # Load up params from inheritance
+        p = Game.game_para
+        a = Game.game_alert
+        random = Game.randomInt
+        Text = Game.text
+        lang = lang.numbers_game
+        # Run it
+        Text.print(lang['intro'], p.Style, p.Width)
+        loop()
 
-    def main(self, funds, lang):
-        self.Text.print(lang['game_text'])
+        # Our game play loop
+        def loop(self):
+            print()

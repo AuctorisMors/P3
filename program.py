@@ -2,6 +2,7 @@
 from support.funds import Funds
 from support.text import Text
 from games.slots import Slots
+from games.numbers import Numbers
 import support.language as Lang
 
 # Params
@@ -35,7 +36,7 @@ def main_menu(p,lang):
     lang = lang.copy
     Text.print(lang['main-menu'], p.Style, p.Width)
     menu = {
-        0 : [lang['menu1'], Slots.main], 1 : [lang['menu2'], Slots.main], 2 : [lang['menu1'], Slots.main],
+        0 : [lang['menu1'], Slots.main], 1 : [lang['menu2'], Numbers.main], 2 : [lang['menu1'], Slots.main],
         3 : [lang['menu1'], Slots.main], 4 : [lang['menu1'], Slots.main], 5 : [lang['menu1'], Slots.main],
         6 : [lang['menu1'], Slots.main], 7 : [lang['menu2'], Slots.main], 8 : [lang['menu2'], Slots.main]
     }
