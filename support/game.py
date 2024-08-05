@@ -8,3 +8,9 @@ class Game:
     game_alert = Text.Paragraph("!", game_para.Width, game_para.Type)
     randomInt = random.randint
     text = Text
+    #loop manager
+    def loop(self, func, lang, lang_c):
+        while True:
+            func()
+            Text.print(lang['ending'], self.game_para.Style, self.game_para.Width)
+            if not Text.prompt(lang_c):break
