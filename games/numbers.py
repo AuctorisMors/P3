@@ -2,9 +2,10 @@ from support.game import *
 
 class Numbers(Game):
     # Define out startup func
-    def main(funds, lang = Settings.lang):
+    def main(funds):
+        lang = Settings.lang.numbers_game
         # Run it
-        Text.print(Settings.lang.numbers_game['intro'], Game.game_para.Style, Game.game_para.Width)
+        Text.print(lang['intro'], Game.game_para.Style, Game.game_para.Width)
         # Our game logic
         def logic():
             Text.print(lang['input'], Game.game_para.Style, Game.game_para.Width)

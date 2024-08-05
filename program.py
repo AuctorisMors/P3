@@ -1,5 +1,6 @@
 # Description: This is a simple Python program created to learn python.
 from support.settings import *
+import support.game_list as Gl
 
 # Params
 basic_para = Text.Paragraph("#", 128, "box")

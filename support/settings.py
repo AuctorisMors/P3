@@ -1,6 +1,5 @@
 # our global settings file
 import support.language as Lang
-import support.game_list as Gl
 from support.funds import *
 from support.text import *
 
