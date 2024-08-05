@@ -1,7 +1,7 @@
 # our global settings file
 import support.language as Lang
 from support.funds import *
-from support.text import Text
+from support.text import *
 
 class Settings:
     lang = None
