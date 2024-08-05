@@ -9,7 +9,7 @@ class Numbers(Game):
         random = Game.randomInt
         Text = Game.text
         lang_c = lang.copy
-        lang = lang.numbers_game
+        lang = lang.blank
         # Run it
         Text.print(lang['intro'], p.Style, p.Width)
 

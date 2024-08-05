@@ -9,7 +9,8 @@ class Eng:
         'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
     }
         numbers_game = {
-            'intro': 'beepboop'
+            'intro': 'beepboop',
+            'ending': 'Would you like to play numbers again?'
         }
 class Esp:
         copy = {
