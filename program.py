@@ -1,20 +1,24 @@
 # Description: This is a simple Python program created to learn python.
+import games.slots
 from support.funds import Funds
 from support.text import Text
 import support.language as Lang
 import games
 
 # Params
-basic_para = Text.Paragraph("#", 32, "box")
+basic_para = Text.Paragraph("#", 128, "box")
 funds = Funds(1000)
 
-## Main Func
+# Main Func
 def main():
     # Start
     lang = language_choice(basic_para)
     Text.print(lang['intro'] + f"{funds.get()}", basic_para.Style, basic_para.Width)
     input()
     main_menu(basic_para, lang)
+
+
+# Menu Functions
 ## Get our game language
 def language_choice(p):
     choices = ['eng','esp','ukr']
@@ -31,11 +35,26 @@ def language_choice(p):
 def main_menu(p,lang):
     Text.print(lang['main-menu'], p.Style, p.Width)
     menu = {
-        '1' : ['3 Lane Slots', games.Slots.main],
-        '2' : ['3 Lane Slots', games.Slots.main]
+        0 : [lang['menu1'], games.slots.Slots.main], 1 : [lang['menu2'], games.slots.Slots.main], 2 : [lang['menu1'], games.slots.Slots.main],
+        3 : [lang['menu1'], games.slots.Slots.main], 4 : [lang['menu1'], games.slots.Slots.main], 5 : [lang['menu1'], games.slots.Slots.main],
+        6 : [lang['menu1'], games.slots.Slots.main], 7 : [lang['menu2'], games.slots.Slots.main], 8 : [lang['menu2'], games.slots.Slots.main]
     }
-    menu['1'][1](funds,lang)
-    print(f'{funds.get()}')
+    ## Print out menu
+    for x in menu.keys():
+        if x % 3 == 0 or x == 1:
+            temp = str(x) + ' - ' + menu[x][0] + ' '
+            try:
+                temp1 = str(x+1) + ' - ' + menu[x+1][0] + ' '
+            except:
+                pass
+            try:
+                temp2 = str(x+2) + ' - ' + menu[x+2][0] + ' '
+            except:
+                pass
+            print('% ' + temp.center(int(p.Width / 3)) + temp1.center(int(p.Width / 3) - 1) + temp2.center(int(p.Width / 3))+ '%')
+    print('%' * p.Width)
+
+
 # Run the main function
 if __name__ == "__main__":
     main()

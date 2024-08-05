@@ -62,7 +62,7 @@ class Text:
         _ans = ''
         while _ans == '':
             try:
-                _ans = str(input())
+                _ans = str(input('$> '))
             except:
                 print(lang['request'] + str(choices))
                 _ans = ''
