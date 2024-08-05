@@ -22,9 +22,9 @@ def main_menu(p):
     lang = Settings.lang
     Text.print(lang_copy['main-menu'], p.Style, p.Width)
     menu = {
-        0 : [lang_copy['menu1'], Gm.Slots.main], 1 : [lang_copy['menu2'], Gm.Numbers.main], 2 : [lang_copy['menu1'], Gm.Slots.main],
-        3 : [lang_copy['menu1'], Gm.Slots.main], 4 : [lang_copy['menu1'], Gm.Slots.main], 5 : [lang_copy['menu1'], Gm.Slots.main],
-        6 : [lang_copy['menu1'], Gm.Slots.main], 7 : [lang_copy['menu2'], Gm.Slots.main], 8 : [lang_copy['menu2'], Gm.Slots.main]
+        0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu1'], Gl.Slots.main],
+        3 : [lang_copy['menu1'], Gl.Slots.main], 4 : [lang_copy['menu1'], Gl.Slots.main], 5 : [lang_copy['menu1'], Gl.Slots.main],
+        6 : [lang_copy['menu1'], Gl.Slots.main], 7 : [lang_copy['menu2'], Gl.Slots.main], 8 : [lang_copy['menu2'], Gl.Slots.main]
     }
     ## Print out menu
     for x in menu.keys():
@@ -41,8 +41,8 @@ def main_menu(p):
             print('% ' + temp.center(int(p.Width / 3)) + temp1.center(int(p.Width / 3) - 1) + temp2.center(int(p.Width / 3))+ '%')
     print('%' * p.Width)
     ## Request the player pick an option, convert out keys to str for compat with the request func but back to int for key usage lol
-    _choice = int(Text.request(str(menu.keys()), lang))
-    menu[_choice][1](funds, lang_copy)
+    _choice = int(Text.request(str(menu.keys())))
+    menu[_choice][1](funds)
 # Run the main function
 if __name__ == "__main__":
     main()

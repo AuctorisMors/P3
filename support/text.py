@@ -1,5 +1,6 @@
 from collections import namedtuple
 class Text:
+    lang = None
     Paragraph = namedtuple("Paragraph", ["Style", "Width", "Type"])
     # Print paragraph text.
     def print(n,char,width,bType = None):
@@ -42,7 +43,7 @@ class Text:
             print(char + " " + line[i].center(width - 3) + char)
         print(char * width) # Print the bottom border (char) to the console
     ## Ask the player to enter Y/N to a prompt, make sure it is a string and either y or n.
-    def prompt(lang):
+    def prompt(lang=lang):
         _ans = ""
         while _ans == "":
             try:
@@ -58,7 +59,7 @@ class Text:
                 print(lang['not-valid'])
                 _ans = ""
     ## Take a dict and ask the player to pick one
-    def request(choices, lang):
+    def request(choices, lang=lang):
         _ans = ''
         while _ans == '':
             try:

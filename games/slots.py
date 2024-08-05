@@ -1,11 +1,10 @@
-from support.game import Game
+from support.game import *
 
 class Slots(Game):
     # Load up params from inheritance
     p = Game.game_para
     a = Game.game_alert
     random = Game.randomInt
-    Text = Game.console
 
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
@@ -13,7 +12,7 @@ class Slots(Game):
     slotCount = 3
 
     # Main game
-    def main(funds, lang, p = p, a = a, Text = Text):
+    def main(funds, lang, p = p, a = a):
         lang = lang.copy
         active = True
         # Print the welcome message
@@ -31,7 +30,7 @@ class Slots(Game):
         return funds
     # Pull that lever!
     # Get our symbols, see who much we won
-    def pullLever(_bet, p = p, a = a, random = random, Text = Text):
+    def pullLever(_bet, p = p, a = a, random = random):
         ## Pull the lever
         # Get the random symbols
         randomSymbols = ["","",""]

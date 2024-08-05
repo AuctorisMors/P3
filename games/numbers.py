@@ -1,15 +1,13 @@
-from support.game import Game
+from support.game import *
 
 class Numbers(Game):
     # Define out startup func
-    def main(funds, lang):
-        # Load up params from inheritance
-        lang_c = lang.copy
-        lang = lang.numbers_game
+    def main(funds, lang = Settings.lang):
         # Run it
-        Game.console.print(lang['intro'], Game.game_para.Style, Game.game_para.Width)
+        Text.print(Settings.lang.numbers_game['intro'], Game.game_para.Style, Game.game_para.Width)
         # Our game logic
         def logic():
-            print("")
+            Text.print(lang['input'], Game.game_para.Style, Game.game_para.Width)
+            number = Text.request()
         # Loop our game logic using the game class manager
-        Game.loop(Game, logic, lang, lang_c)
+        Game.loop(Game, logic)

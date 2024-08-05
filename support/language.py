@@ -9,7 +9,8 @@ class Eng:
         'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
     }
         numbers_game = {
-            'intro': 'beepboop',
+            'intro': 'Welcome to the Numbers game. Enter a number and Python will try to guess it!',
+            'input': 'Enter a number between 1 and 10,000, with out commas',
             'ending': 'Would you like to play numbers again?'
         }
 class Esp:
