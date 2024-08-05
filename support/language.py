@@ -8,6 +8,9 @@ class Eng:
         'yon' : "Yes or No? $> ",
         'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
     }
+        numbers_game = {
+            'intro': 'beepboop'
+        }
 class Esp:
         copy = {
         'intro': 'Press Enter to Start! You have: $',

@@ -12,7 +12,7 @@ funds = Funds(1000)
 def main():
     # Start
     lang = language_choice(basic_para)
-    Text.print(lang['intro'] + f"{funds.get()}", basic_para.Style, basic_para.Width)
+    Text.print(lang.copy['intro'] + f"{funds.get()}", basic_para.Style, basic_para.Width)
     input()
     main_menu(basic_para, lang)
 
@@ -24,13 +24,15 @@ def language_choice(p):
     Text.print('Language: Eng, Esp, Ukr?', p.Style, p.Width)
     _lang = Text.request(choices, _lang)
     if _lang == 'eng':
-        return Lang.Eng.copy
+        return Lang.Eng
     elif _lang == 'esp':
-        return Lang.Esp.copy
+        return Lang.Esp
     else:
-        return Lang.Ukr.copy
+        return Lang.Ukr
 ## Define out main menu
 def main_menu(p,lang):
+    lang_choice = lang
+    lang = lang.copy
     Text.print(lang['main-menu'], p.Style, p.Width)
     menu = {
         0 : [lang['menu1'], Slots.main], 1 : [lang['menu2'], Slots.main], 2 : [lang['menu1'], Slots.main],
@@ -53,7 +55,7 @@ def main_menu(p,lang):
     print('%' * p.Width)
     ## Request the player pick an option, convert out keys to str for compat with the request func but back to int for key usage lol
     _choice = int(Text.request(str(menu.keys()), lang))
-    menu[_choice][1](funds, lang)
+    menu[_choice][1](funds, lang_choice)
 # Run the main function
 if __name__ == "__main__":
     main()
