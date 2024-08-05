@@ -49,33 +49,35 @@ class Slots:
                     matching_symbols.add(4)
                     matching_symbols.add(6)
                 if len(matching_symbols) >= 3: # If there are at least 3 matching symbols, the user wins an amount based on the symbol
-                    match printedSymbols[i]:
-                        case "⚊": # If the symbol is a blank, the user wins nothing
+                    for x in printedSymbols[i]:
+                        if "⚊": # If the symbol is a blank, the user wins nothing
                             break
-                        case "⛛":
+                        elif "⛛":
                             _castOut += _bet * 1.05
-                        case "♦":
+                        elif "♦":
                             _castOut += _bet * 1.10
-                        case  "♥":
+                        elif  "♥":
                             _castOut += _bet * 1.15
-                        case "♣":
+                        elif "♣":
                             _castOut += _bet * 1.20
-                        case "♠":
+                        elif "♠":
                             _castOut += _bet * 1.25
-                        case "♞":
+                        elif "♞":
                             _castOut += _bet * 1.30
-                        case "♝":
+                        elif "♝":
                             _castOut += _bet * 1.35
-                        case "♜":
+                        elif "♜":
                             _castOut += _bet * 1.40
-                        case "♛":
+                        elif "♛":
                             _castOut += _bet * 1.45
-                        case "✪":
+                        elif "✪":
                             _castOut += _bet * 1.50
-                        case "♚":
+                        elif "♚":
                             _castOut += _bet * 1.55
-                        case "Ⅻ":
+                        elif "Ⅻ":
                             _castOut += _bet * 1.60
+                        else:
+                            _castOut += _bet * 0
                     # user also gets some money for the number of matching symbols in total
                     _castOut += _bet * (len(matching_symbols) - 1) / 2
         # Deduct taxes to keep the game fair
