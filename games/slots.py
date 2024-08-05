@@ -1,17 +1,20 @@
 from support.text import Text
+from games.game import Game
 import random
 
-class Slots:
+class Slots(Game):
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
     symbolsCount = len(symbols)
     slotCount = 3
-
-    def main(funds, lang):
+    p = Game.game_para
+    a = Game.game_alert
+    # Main game
+    def main(funds, lang, p = p, a = a):
         active = True
         # Print the welcome message
-        Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", "#", 32, "box")
-        Text.print("Press enter to start", "%", 32, "box")
+        Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", p.Style, p.Width, p.Type)
+        Text.print("Press enter to start", p.Style, p.Width, p.Type)
         input() # Wait for the user to press Enter
         while active:
             bet = funds.bet()
@@ -19,12 +22,12 @@ class Slots:
             # already deducted bet, so lets add winnings
             funds.edit(castOut, "add")
             # See if they want to play again.
-            Text.print("Do you want to play again?", "%", 32, "box")
+            Text.print("Do you want to play again?", a.Style, p.Width, p.Type)
             active = Text.prompt(lang)
         return funds
     # Pull that lever!
     # Get our symbols, see who much we won
-    def pullLever(_bet):
+    def pullLever(_bet, p = p, a = a):
         ## Pull the lever
         # Get the random symbols
         randomSymbols = ["","",""]
@@ -84,7 +87,7 @@ class Slots:
         _castOut = _castOut * 0.9
         _castOut = round(_castOut)
         # Print the slot machine
-        Text.print("Slot Machine", "#", 32, "box")
-        Text.print(printedSymbols, "#", 32, "3col")
-        print(f"You won {_castOut}!")
+        Text.print("Slot Machine", p.Style, p.Width, p.Type)
+        Text.print(printedSymbols, p.Style, p.Width, "3col")
+        Text.print(f"You won {_castOut}!", a.Style, p.Width, p.Type)
         return _castOut
