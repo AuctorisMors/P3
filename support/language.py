@@ -5,13 +5,13 @@ class Eng:
         'menu2': 'Number Game.',
         'request': 'Must be of:',
         'not-valid': 'Error: Not Valid!',
+        'ending': 'Game over, play again?',
         'yon' : "Yes or No? $> ",
         'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
     }
         numbers_game = {
             'intro': 'Welcome to the Numbers game. Enter a number and Python will try to guess it!',
-            'input': 'Enter a number between 1 and 10,000, with out commas',
-            'ending': 'Would you like to play numbers again?'
+            'input': 'Enter a number between 1 and 10,000, with out commas'
         }
 class Esp:
         copy = {

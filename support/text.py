@@ -1,6 +1,11 @@
 from collections import namedtuple
+
 class Text:
     lang = None
+    def set_lang(self, lang):
+        self.lang = lang
+    def get_lang(self):
+        return self.lang
     Paragraph = namedtuple("Paragraph", ["Style", "Width", "Type"])
     # Print paragraph text.
     def print(n,char,width,bType = None):
@@ -43,7 +48,8 @@ class Text:
             print(char + " " + line[i].center(width - 3) + char)
         print(char * width) # Print the bottom border (char) to the console
     ## Ask the player to enter Y/N to a prompt, make sure it is a string and either y or n.
-    def prompt(lang=lang):
+    def prompt():
+        lang = Text.get_lang(Text)
         _ans = ""
         while _ans == "":
             try:
@@ -59,16 +65,17 @@ class Text:
                 print(lang['not-valid'])
                 _ans = ""
     ## Take a dict and ask the player to pick one
-    def request(choices, lang=lang):
+    def request(choices):
+        lang = Text.get_lang(Text)
         _ans = ''
         while _ans == '':
             try:
                 _ans = str(input('$> '))
+                if _ans.lower() in choices:
+                    return _ans.lower()
+                else:
+                    print(lang['request'] + str(choices))
+                    _ans = ''
             except:
-                print(lang['request'] + str(choices))
-                _ans = ''
-            if _ans.lower() in choices:
-                return _ans.lower()
-            else:
                 print(lang['request'] + str(choices))
                 _ans = ''

@@ -9,6 +9,9 @@ class Numbers(Game):
         # Our game logic
         def logic():
             Text.print(lang['input'], Game.game_para.Style, Game.game_para.Width)
-            number = Text.request()
+            numbers = []
+            for i in range(1, 10000):
+                numbers.append(i)
+            number = int(Text.request(str(numbers)))
         # Loop our game logic using the game class manager
         Game.loop(Game, logic)

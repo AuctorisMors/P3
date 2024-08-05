@@ -1,7 +1,7 @@
 # our global settings file
 import support.language as Lang
 from support.funds import *
-from support.text import *
+from support.text import Text
 
 class Settings:
     lang = None
@@ -24,4 +24,4 @@ class Settings:
     # Set global copy
     def set_Language_copy(self, lang):
         self.lang_c = lang.copy
-        Text.lang = lang.copy
+        Text.set_lang(Text, lang.copy)
