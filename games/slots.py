@@ -1,16 +1,18 @@
-from support.text import Text
-from games.game import Game
-import random
+from support.game import Game
 
 class Slots(Game):
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
     symbolsCount = len(symbols)
     slotCount = 3
+    # Load up params from inheritance
     p = Game.game_para
     a = Game.game_alert
+    random = Game.randomInt
+    Text = Game.text
+
     # Main game
-    def main(funds, lang, p = p, a = a):
+    def main(funds, lang, p = p, a = a, Text = Text):
         active = True
         # Print the welcome message
         Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", p.Style, p.Width, p.Type)
@@ -27,13 +29,13 @@ class Slots(Game):
         return funds
     # Pull that lever!
     # Get our symbols, see who much we won
-    def pullLever(_bet, p = p, a = a):
+    def pullLever(_bet, p = p, a = a, random = random, Text = Text):
         ## Pull the lever
         # Get the random symbols
         randomSymbols = ["","",""]
         for i in range(3):
             for j in range(Slots.slotCount):
-                randomSymbols[i] += Slots.symbols[random.randint(0, Slots.symbolsCount - 1)] + " "
+                randomSymbols[i] += Slots.symbols[random(0, Slots.symbolsCount - 1)] + " "
         printedSymbols = randomSymbols[0] + randomSymbols[1] + randomSymbols[2]
         # Check if the user won
         _castOut = 0
