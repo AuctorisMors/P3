@@ -19,7 +19,9 @@ class Settings():
             return Lang.Esp
         else:
             return Lang.Ukr
+    # Set global language
     def set_language(self, lang):
         self.lang = lang
+    # Set global copy
     def set_Language_copy(self, lang):
         self.lang_c = lang.copy
