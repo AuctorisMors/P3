@@ -5,8 +5,8 @@ class Eng:
         'menu2': 'Number Game.',
         'request': 'Must be of:',
         'not-valid': 'Error: Not Valid!',
-        'yon' : "Yes or No?",
-        'main-menu' : 'Welcome to my humble game browser project. Select from an option below!'
+        'yon' : "Yes or No? $> ",
+        'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
     }
 class Esp:
         copy = {

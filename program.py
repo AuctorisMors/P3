@@ -53,8 +53,9 @@ def main_menu(p,lang):
                 pass
             print('% ' + temp.center(int(p.Width / 3)) + temp1.center(int(p.Width / 3) - 1) + temp2.center(int(p.Width / 3))+ '%')
     print('%' * p.Width)
-
-
+    ## Request the player pick an option, convert out keys to str for compat with the request func but back to int for key usage lol
+    _choice = int(Text.request(str(menu.keys()), lang))
+    menu[_choice][1](funds, lang)
 # Run the main function
 if __name__ == "__main__":
     main()

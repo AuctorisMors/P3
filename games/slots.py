@@ -56,7 +56,7 @@ class Slots:
                             _castOut += _bet * 1.05
                         elif "♦":
                             _castOut += _bet * 1.10
-                        elif  "♥":
+                        elif "♥":
                             _castOut += _bet * 1.15
                         elif "♣":
                             _castOut += _bet * 1.20
