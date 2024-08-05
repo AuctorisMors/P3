@@ -4,6 +4,7 @@ from support.funds import *
 from support.text import *
 
 class Settings:
+    funds = Funds(1000)
     lang = None
     lang_c = None
     ## Get our game language

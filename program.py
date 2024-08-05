@@ -4,13 +4,12 @@ import support.game_list as Gl
 
 # Params
 basic_para = Text.Paragraph("#", 128, "box")
-funds = Funds(1000)
 
 # Main Func
 def main():
     # Start
     lang = Settings.language_choice(basic_para)
-    Text.print(lang.copy['intro'] + f"{funds.get()}", basic_para.Style, basic_para.Width)
+    Text.print(lang.copy['intro'] + f"{Settings.funds.get()}", basic_para.Style, basic_para.Width)
     input()
     Settings.set_language(Settings, lang)
     Settings.set_Language_copy(Settings, lang)
@@ -43,7 +42,7 @@ def main_menu(p):
     print('%' * p.Width)
     ## Request the player pick an option, convert out keys to str for compat with the request func but back to int for key usage lol
     _choice = int(Text.request(str(menu.keys())))
-    menu[_choice][1](funds)
+    menu[_choice][1]()
 # Run the main function
 if __name__ == "__main__":
     main()

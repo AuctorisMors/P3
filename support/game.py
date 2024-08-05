@@ -1,6 +1,5 @@
 # This is the master class for each game object
 from support.settings import *
-from support.text import *
 import random
 
 class Game:

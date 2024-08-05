@@ -5,6 +5,7 @@ class Slots(Game):
     p = Game.game_para
     a = Game.game_alert
     random = Game.randomInt
+    funds = Settings.funds
 
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
@@ -12,8 +13,7 @@ class Slots(Game):
     slotCount = 3
 
     # Main game
-    def main(funds, lang, p = p, a = a):
-        lang = lang.copy
+    def main(funds = funds, p = p, a = a):
         active = True
         # Print the welcome message
         Text.print("Welcome to the Slot Machine! Press Enter to pull the lever and win some coins!", p.Style, p.Width, p.Type)
@@ -26,7 +26,7 @@ class Slots(Game):
             funds.edit(castOut, "add")
             # See if they want to play again.
             Text.print("Do you want to play again?", a.Style, p.Width, p.Type)
-            active = Text.prompt(lang)
+            active = Text.prompt()
         return funds
     # Pull that lever!
     # Get our symbols, see who much we won
