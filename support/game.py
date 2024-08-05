@@ -7,7 +7,8 @@ class Game:
     game_para = Text.Paragraph("@", 128, "box")
     game_alert = Text.Paragraph("!", game_para.Width, game_para.Type)
     randomInt = random.randint
-    text = Text
+    console = Text
+    lang_c = None
     #loop manager
     def loop(self, func, lang, lang_c):
         while True:

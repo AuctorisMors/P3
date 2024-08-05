@@ -5,7 +5,7 @@ class Slots(Game):
     p = Game.game_para
     a = Game.game_alert
     random = Game.randomInt
-    Text = Game.text
+    Text = Game.console
 
     # Parameters for the slot machine
     symbols = ["Ⅻ", "♚", "✪", "♛", "♜", "♝", "♝", "♞", "♞", "♠", "♠", "♣", "♣", "♥", "♥", "♦", "♦", "⚊", "⚊", "⚊", "⛛", "⛛", "⛛", "⛛"]
