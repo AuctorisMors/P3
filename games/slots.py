@@ -2,7 +2,7 @@ from support.game import *
 
 class Slots(Game):
     # Load up params from inheritance
-    p = Game.game_para
+    p = Game.console
     a = Game.game_alert
     random = Game.randomInt
     funds = Settings.funds

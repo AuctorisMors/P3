@@ -19,7 +19,7 @@ def main():
 ## Define out main menu
 def main_menu(p):
     lang_copy = Settings.lang_c
-    lang = Settings.lang
+    lang = Settings.langn
     Text.print(lang_copy['main-menu'], p.Style, p.Width)
     menu = {
         0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu1'], Gl.Slots.main],
@@ -43,6 +43,7 @@ def main_menu(p):
     ## Request the player pick an option, convert out keys to str for compat with the request func but back to int for key usage lol
     _choice = int(Text.request(str(menu.keys())))
     menu[_choice][1]()
+    main_menu(p)
 # Run the main function
 if __name__ == "__main__":
     main()
