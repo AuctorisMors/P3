@@ -19,7 +19,7 @@ def main():
 ## Define out main menu
 def main_menu(p):
     lang_copy = Settings.lang_c
-    lang = Settings.langn
+    lang = Settings.lang
     Text.print(lang_copy['main-menu'], p.Style, p.Width)
     menu = {
         0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu1'], Gl.Slots.main],
