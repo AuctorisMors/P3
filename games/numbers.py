@@ -41,8 +41,7 @@ class Numbers(Game):
                     else:
                         print(Settings.lang_c['not-valid'])
                         _ans = ""
-            else:
-                Text.print(lang['win'] + f'{num_guess}!! ' + lang['guesses'] + f'{guesses}!', Game.console.Style, Game.console.Width)
-                Settings.funds.edit(int(guesses*(bet*0.05)), 'add')
+            Text.print(lang['win'] + f'{num_guess}!! ' + lang['guesses'] + f'{guesses}!', Game.console.Style, Game.console.Width)
+            Settings.funds.edit(int(guesses*(bet*0.05)), 'add')
         # Loop our game logic using the game class manager
         Game.loop(Game, logic)
