@@ -19,7 +19,7 @@ class Text:
         charCount = 0 # Initialize the character count to 0
         # The Function to print the paragraphs
         print() # Print a blank new line to the console
-        print(char * width) # Print the top border (char) to the console
+        print('\033[31m' + char * width + '\033[0m') # Print the top border (char) to the console
         if boxType == "box": # If the box type is "box", print the box type
             for i in range(len(paragraphs)): # Iterate through the list of strings
                 if charCount + len(paragraphs[i]) < width - 3: # If the character count plus the length of the current string is less than or equal to the width, add it to the current line
@@ -46,7 +46,7 @@ class Text:
         # Print the lines to the console
         for i in range(lineCount + 1):
             print(char + " " + line[i].center(width - 3) + char)
-        print(char * width) # Print the bottom border (char) to the console
+        print('\033[31m' + char * width + '\033[0m') # Print the bottom border (char) to the console
     ## Ask the player to enter Y/N to a prompt, make sure it is a string and either y or n.
     def prompt():
         lang = Text.get_lang(Text)
