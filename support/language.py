@@ -9,6 +9,8 @@ class Eng:
             'ending': 'Game over, play again?',
             'yon' : "Yes or No? $> ",
             'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!',
+            'about_contents': 'This is a little terminal based application that was created in an effort to learn python in a fun and complex manner. The games are not balanced, but point was the code lol.',
+            'about': 'About App.',
             'exit': 'Quit App.'
         }
         numbers_game = {

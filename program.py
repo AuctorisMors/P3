@@ -24,7 +24,7 @@ def main_menu(p):
     menu = {
         0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu3'], Gl.Guess.main],
         3 : [lang_copy['menu1'], Gl.Slots.main], 4 : [lang_copy['menu1'], Gl.Slots.main], 5 : [lang_copy['menu1'], Gl.Slots.main],
-        6 : [lang_copy['menu1'], Gl.Slots.main], 7 : [lang_copy['menu2'], Gl.Slots.main], 8 : [lang_copy['exit'], exit]
+        6 : [lang_copy['menu1'], Gl.Slots.main], 7 : [lang_copy['about'], about], 8 : [lang_copy['exit'], exit]
     }
     ## Print out menu
     for x in menu.keys():
@@ -44,6 +44,12 @@ def main_menu(p):
     _choice = int(Text.request(str(menu.keys())))
     menu[_choice][1]()
     main_menu(p)
+#About this app
+def about():
+# Run the main function
+    Text.print(Settings.lang_c['about_contents'], basic_para.Style, basic_para.Width)
+    input('%>')
+    main_menu(basic_para)
 # Run the main function
 if __name__ == "__main__":
     main()
