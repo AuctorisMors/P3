@@ -8,7 +8,8 @@ class Eng:
             'not-valid': 'Error: Not Valid!',
             'ending': 'Game over, play again?',
             'yon' : "Yes or No? $> ",
-            'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!'
+            'main-menu' : 'Welcome to my humble game browser project. Select from an option below by entering its Number!',
+            'exit': 'Quit App.'
         }
         numbers_game = {
             'intro': 'Welcome to the Numbers game. Enter a number and Python will try to guess it!',
