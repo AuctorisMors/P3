@@ -22,7 +22,7 @@ def main_menu(p):
     lang = Settings.lang
     Text.print(lang_copy['main-menu'], p.Style, p.Width)
     menu = {
-        0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu1'], Gl.Slots.main],
+        0 : [lang_copy['menu1'], Gl.Slots.main], 1 : [lang_copy['menu2'], Gl.Numbers.main], 2 : [lang_copy['menu3'], Gl.Guess.main],
         3 : [lang_copy['menu1'], Gl.Slots.main], 4 : [lang_copy['menu1'], Gl.Slots.main], 5 : [lang_copy['menu1'], Gl.Slots.main],
         6 : [lang_copy['menu1'], Gl.Slots.main], 7 : [lang_copy['menu2'], Gl.Slots.main], 8 : [lang_copy['menu2'], Gl.Slots.main]
     }

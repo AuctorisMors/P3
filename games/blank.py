@@ -2,14 +2,12 @@ from support.game import *
 
 class Numbers(Game):
     # Define out startup func
-    def main(funds):
-        # Load up params from inheritance
-        lang_c = Settings.lang_c
+    def main():
         lang = Settings.lang.numbers_game
         # Run it
-        Text.print(lang['intro'], Game.game_para.Style, Game.game_para.Width)
+        Text.print(lang['intro'], Game.console.Style, Game.console.Width)
         # Our game logic
         def logic():
             print("")
         # Loop our game logic using the game class manager
-        Game.loop(Game, logic, lang, lang_c)
+        Game.loop(Game, logic)
