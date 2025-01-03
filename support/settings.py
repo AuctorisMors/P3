@@ -9,16 +9,10 @@ class Settings:
     lang_c = None
     ## Get our game language
     def language_choice(p):
-        choices = ['eng','esp','ukr']
-        _lang = Lang.Eng.copy #default to eng so this works
+        choices = ['eng', 'esp', 'ukr']
         Text.print('Language: Eng, Esp, Ukr?', p.Style, p.Width)
         _lang = Text.request(choices)
-        if _lang == 'eng':
-            return Lang.Eng
-        elif _lang == 'esp':
-            return Lang.Esp
-        else:
-            return Lang.Ukr
+        return getattr(Lang, _lang.capitalize(), Lang.Eng)
     # Set global language
     def set_language(self, lang):
         self.lang = lang
