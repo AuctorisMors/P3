@@ -11,12 +11,13 @@ class Settings:
     lang = None
     lang_c = None
 
+    ## Load method, classmethod for private
     @classmethod
     def load_settings(cls):
         if os.path.exists(cls.settings_file):
             with open(cls.settings_file, 'r') as file:
                 data = json.load(file)
-                cls.funds = Funds(data.get('funds', 1000))
+                cls.funds = Funds(data.get('funds'))
                 lang_name = data.get('lang', 'Eng')
                 cls.lang = getattr(Lang, lang_name, Lang.Eng)
                 cls.lang_c = cls.lang.copy
@@ -26,6 +27,7 @@ class Settings:
             cls.lang = Lang.Eng
             cls.lang_c = Lang.Eng.copy
 
+    ## Save Method
     @classmethod
     def save_settings(cls):
         data = {
@@ -35,9 +37,6 @@ class Settings:
         with open(cls.settings_file, 'w') as file:
             json.dump(data, file)
 
-    funds = Funds(1000)
-    lang = None
-    lang_c = None
     ## Get our game language
     @classmethod
     def language_choice(cls, p):

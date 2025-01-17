@@ -1,0 +1,3 @@
+The program is a terminal-based game application written in Python. It includes several modules and classes to handle different aspects of the game, such as settings, text display, language support, and game logic. The project has been completely rebuilt a few times as I learn more about types of patterns and pythonic guidelines.
+
+The current state of the program in Jan 2025 requires me to do a larger rewrite as it has become obvious there is an inherent issue with how the code is all organized. My plan is to rewrite it to be more straight forward and pythonic.[[Jan-Flow-Revision.canvas|Jan-Flow-Revision]] features the current structural idea for the refactoring.
