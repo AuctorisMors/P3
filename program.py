@@ -7,12 +7,17 @@ basic_para = Text.Paragraph("#", 128, "box")
 
 # Main Func
 def main():
-    # Start
-    lang = Settings.language_choice(basic_para)
-    Text.print(lang.copy['intro'] + f"{Settings.funds.get()}", basic_para.Style, basic_para.Width)
-    input()
-    Settings.set_language(Settings,lang)
-    Settings.set_Language_copy(Settings,lang)
+    # Load settings
+    Settings.load_settings()
+    if Settings.lang is Lang.Eng and Settings.funds.get() == 1000:
+        # Initial setup
+        lang = Settings.language_choice(basic_para)
+        Text.print(lang.copy['intro'] + f"{Settings.funds.get()}", basic_para.Style, basic_para.Width)
+        input()
+        Settings.set_language(Settings, lang)
+        Settings.set_Language_copy(Settings, lang)
+        # Save settings after initial setup
+        Settings.save_settings()
     main_menu(basic_para)
 
 # Menu Functions
