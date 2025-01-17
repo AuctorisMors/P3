@@ -1,1 +1,34 @@
-{}
+{
+	"nodes":[
+		{"id":"75b828c59faeea70","type":"group","x":-130,"y":-640,"width":710,"height":1220,"label":"Support.Folder"},
+		{"id":"8dc7c426fb2ba2e3","type":"group","x":-740,"y":-640,"width":400,"height":1320,"label":"Root.Folder"},
+		{"id":"2b04c1530f9631f0","type":"group","x":-130,"y":660,"width":860,"height":360,"label":"Games.Folder"},
+		{"id":"cc9cfc5c37a46dff","type":"group","x":240,"y":-300,"width":310,"height":240,"label":"Copy.SubFolder"},
+		{"id":"4e5a08ed87b5d3d9","type":"text","text":"# Key\n- Green : User Script\n- Orange : Support Script\n- Blue : Class\n- Purple : External File","x":-1360,"y":-635,"width":605,"height":210},
+		{"id":"d0b5caed3fe2579a","type":"text","text":"# Settings.json","x":-720,"y":-620,"width":360,"height":60,"color":"6"},
+		{"id":"3d02eadee3aabee6","type":"text","text":"# Program.py\n- Import links\n- Params:\n\t- lang  = Support.LN\n\t- text = Support.TX\n\t- menu = Support.MN\n\t- loader = Support.GM\n\t- funds = Support.FN\n- Create Settings Obj\n\t- pass funds and text\n- main(settings)\n\t- MN.main_menu(settings)\n\t\t- support.GM.foo.main","x":-720,"y":-490,"width":360,"height":580,"color":"4"},
+		{"id":"30daf410604d24ef","type":"file","file":"!notes/Concepts.md","x":-1360,"y":-410,"width":605,"height":1090},
+		{"id":"bfb0dfb33ce72d84","type":"text","text":"# Settings.py\n- save_settings()\n- load_settings()\n- set_settings()","x":-670,"y":200,"width":260,"height":340,"color":"5"},
+		{"id":"d180f56b90e920fb","type":"text","text":"# Lang.py\n- No Methods\n- from foo import foo\n\t- import classes from the copy files","x":-110,"y":-610,"width":320,"height":220,"color":"2"},
+		{"id":"c2fbb0b235a9021f","type":"text","text":"# Text.py\n- main_menu()\n- print_menu()\n- choice_menu()\n- about_menu()","x":-110,"y":-380,"width":320,"height":220,"color":"2"},
+		{"id":"259dae8c86e45303","type":"text","text":"# Menu.py\n- main_menu()\n- print_menu()\n- choice_menu()\n- about_menu()","x":-110,"y":-140,"width":320,"height":220,"color":"2"},
+		{"id":"4cbee0f01c9c8a74","type":"text","text":"# Funds.py\n","x":-110,"y":95,"width":320,"height":220,"color":"2"},
+		{"id":"4313e6383cfd0aec","type":"text","text":"# Game_Manager.py\n- from games.foo import foo\n\t- for each game","x":-110,"y":330,"width":320,"height":220,"color":"2"},
+		{"id":"c48dcc20f07058e5","type":"text","text":"# Game.py\n- loop(self,func,settings)","x":240,"y":-30,"width":310,"height":340,"color":"5"},
+		{"id":"5a7ea52538139680","type":"text","text":"# Lang_Eng.Py\n","x":260,"y":-270,"width":270,"height":50,"color":"2"},
+		{"id":"9a9c73c7b9fc41bb","type":"text","text":"# Lang_Esp.Py\n","x":260,"y":-200,"width":270,"height":50,"color":"2"},
+		{"id":"a50ee315b0f20b1a","type":"text","text":"# Lang_Ukr.Py\n","x":260,"y":-130,"width":270,"height":50,"color":"2"}
+	],
+	"edges":[
+		{"id":"be67595bcb39f76f","fromNode":"bfb0dfb33ce72d84","fromSide":"top","toNode":"3d02eadee3aabee6","toSide":"bottom","color":"2","label":"from"},
+		{"id":"206896950f36bfd0","fromNode":"259dae8c86e45303","fromSide":"left","toNode":"3d02eadee3aabee6","toSide":"right","color":"2","label":"import as MN"},
+		{"id":"8ff1f60924322bfa","fromNode":"cc9cfc5c37a46dff","fromSide":"top","toNode":"d180f56b90e920fb","toSide":"right","color":"2","label":"from"},
+		{"id":"9800ba1fd21448dd","fromNode":"4313e6383cfd0aec","fromSide":"left","toNode":"3d02eadee3aabee6","toSide":"right","color":"2","label":"import as GM"},
+		{"id":"e569a9e917a43c9e","fromNode":"2b04c1530f9631f0","fromSide":"top","toNode":"4313e6383cfd0aec","toSide":"bottom","color":"2","label":"from"},
+		{"id":"9770eec1d7239197","fromNode":"c48dcc20f07058e5","fromSide":"bottom","toNode":"2b04c1530f9631f0","toSide":"top","color":"5","label":"from support.game import *"},
+		{"id":"0dd0ce58f8ddab68","fromNode":"d0b5caed3fe2579a","fromSide":"bottom","toNode":"3d02eadee3aabee6","toSide":"top","color":"6","label":"settings.load_settings()"},
+		{"id":"22281cb4131feb22","fromNode":"c2fbb0b235a9021f","fromSide":"left","toNode":"3d02eadee3aabee6","toSide":"right","color":"2","label":"import as TX"},
+		{"id":"1bef83ffe2e3a2e4","fromNode":"d180f56b90e920fb","fromSide":"left","toNode":"3d02eadee3aabee6","toSide":"right","color":"2","label":"import as LN"},
+		{"id":"c682fb2a6fb36756","fromNode":"4cbee0f01c9c8a74","fromSide":"left","toNode":"3d02eadee3aabee6","toSide":"right","color":"2","label":"import FN"}
+	]
+}

@@ -15,9 +15,9 @@
               "state": {
                 "file": "!notes/Jan-Flow-Revision.canvas",
                 "viewState": {
-                  "x": 0,
-                  "y": 0,
-                  "zoom": 0
+                  "x": 204.85086199450132,
+                  "y": -9.774988094311794,
+                  "zoom": -0.2953206380208332
                 }
               },
               "icon": "lucide-layout-dashboard",
@@ -167,8 +167,8 @@
   },
   "active": "44d2bca59ee9a5f9",
   "lastOpenFiles": [
-    "!notes/Concepts.md",
     "!notes/Jan-Flow-Revision.canvas",
+    "!notes/Concepts.md",
     "!notes/Untitled.md",
     "README.md",
     "!notes"
